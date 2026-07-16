@@ -73,7 +73,7 @@ function EffMax(DD, i, new, symvars;
         @objective(model, Max, to_model(D * B))
         # If negative, the curve splits
         optimize!(model)
-        println("For curve $D, the maximum value of the intersection is: ", objective_value(model))
+        println("For $D the maximum value of the intersection is: ", objective_value(model))
     end
 end
 
