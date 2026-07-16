@@ -1,9 +1,11 @@
 module DegenerationBounds
 
 import SurfaceDegeneration as SD
-using Symbolics, SymbolicUtils
 using JuMP, HiGHS
 
+using Crayons
+
+using Symbolics, SymbolicUtils
 include("SymbolicsToJuMP.jl")
 
 # If linear constraints, we can use a linear programming solver, like HiGHS or GLPK.
@@ -73,7 +75,12 @@ function EffMax(DD, i, new, symvars;
         @objective(model, Max, to_model(D * B))
         # If negative, the curve splits
         optimize!(model)
-        println("For $D the maximum value of the intersection is: ", objective_value(model))
+        val = objective_value(model)
+        if val < 0
+            print(crayon"bold")
+        end
+        print("For $D the maximum value of the intersection is: $(val)\n")
+        print(crayon"reset")
     end
 end
 
