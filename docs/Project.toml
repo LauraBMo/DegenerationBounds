@@ -1,3 +1,6 @@
 [deps]
 DegenerationBounds = "6116c1fb-ab0d-4b39-8716-c5b419c7d2b0"
 Documenter = "e30172f5-a6a5-5a46-863b-614d45cd2de4"
+
+[compat]
+Documenter = "1.19.0"
